@@ -23,6 +23,10 @@ namespace MatrixCalculator
         public MainWindow()
         {
             InitializeComponent();
+
+            
+
+
         }
     }
 }

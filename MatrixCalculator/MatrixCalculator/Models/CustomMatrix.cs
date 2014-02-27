@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace MatrixCalculator.Models
 {
-    class Matrix
+    class CustomMatrix
     {
         private int[,] theMatrix;
         private int size;
 
-        public Matrix(int dimension)
+        public CustomMatrix(int dimension)
         {
             InitializeMatrix(dimension);
         }
@@ -27,9 +27,20 @@ namespace MatrixCalculator.Models
             theMatrix = new int[dimension, dimension];
         }
 
-        public Matrix SubtractMatrix(Matrix otherMatrix)
+        public CustomMatrix SubtractMatrix(CustomMatrix otherMatrix)
         {
-            return null;   
+            CustomMatrix result = new CustomMatrix(size);
+
+            for (int row = 0; row < size; row++)
+            {
+                for (int col = 0; col < size; col++)
+                {
+                    int newValue = theMatrix[col, row] - otherMatrix.getValue(row, col);
+                    result.setValue(row, col, newValue);
+                }
+            }
+
+            return result;
         }
 
         public int getValue(int row, int col)
