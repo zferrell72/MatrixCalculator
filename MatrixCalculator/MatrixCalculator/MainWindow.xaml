@@ -1,8 +1,28 @@
 ﻿<Window x:Class="MatrixCalculator.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="600">
     <Grid>
-        
+        <Grid Height="130" Width="200">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Grid Name="GridDockA" Grid.Column="1" Height="120" Width="100">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Label >Matrix A</Label>
+           </Grid>
+            <Grid Name="GridDockB" Grid.Column="0" Height="120" Width="100">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Label>Matrix B</Label>
+            </Grid>
+           <Grid Name="GridDockOut"></Grid>
+        </Grid>
     </Grid>
 </Window>
