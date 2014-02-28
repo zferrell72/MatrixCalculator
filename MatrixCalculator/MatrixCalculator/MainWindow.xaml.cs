@@ -35,7 +35,7 @@ namespace MatrixCalculator
             CustomMatrix B = new CustomMatrix(dimension);
             B.PopulateMatrix(arrayForB);
 
-            CustomMatrix result = A.SubtractMatrix(B);
+            CustomMatrix result = A.Add(B);
 
             for (int row = 0; row < dimension; row++)
             {

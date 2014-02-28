@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -41,6 +42,22 @@ namespace MatrixCalculator.Models
             }
 
             return result;
+        }
+
+        public CustomMatrix Add(CustomMatrix otherMatrix)
+        {
+            CustomMatrix resultMatrix = new CustomMatrix(size);
+
+            for(int row = 0; row < size; row++)
+            {
+                for (int column = 0; column < size; column++)
+                {
+                    int newResult = theMatrix[row, column] + otherMatrix.getValue(row, column);
+                    resultMatrix.setValue(row, column, newResult);
+                }
+            }
+
+            return resultMatrix;
         }
 
         public int getValue(int row, int col)
