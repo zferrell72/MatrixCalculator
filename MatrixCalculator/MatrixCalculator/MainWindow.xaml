@@ -1,8 +1,6 @@
 ﻿<Window x:Class="MatrixCalculator.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
         Title="MainWindow" Height="400" Width="600">
     <Grid Height="Auto" Width="Auto" Name="GreatFrame">
         <Grid.ColumnDefinitions>
@@ -13,7 +11,7 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        
+
         <Grid Height="Auto" Width="Auto">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
@@ -32,7 +30,7 @@
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <!--<Label>Matrix Deminsions =></Label>-->
+                <Label>Select Deminsions =></Label>
                 <ComboBox Grid.Column="1" >
                     <Button Width="135" Height="30" Name="V2x2" Click="Make2x2">Create 2x2</Button>
                     <Button Width="135" Height="30" Name="V3x3" Click="Make3x3">Create 3x3</Button>
@@ -40,21 +38,22 @@
                     <Button Width="135" Height="30" Name="V5x5" Click="Make5x5">Create 5x5</Button>
                     <Button Width="135" Height="30" Name="V6x6" Click="Make6x6">Create 6x6</Button>
                 </ComboBox>
-                
+
                 <Grid Name="GridDockA" Grid.Column="0" Grid.Row="1" Height="155" Width="145" Background="Red">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30"/>
                         <RowDefinition Height="100"/>
                     </Grid.RowDefinitions>
                     <Label Margin="40 0 0 0">Grid A</Label>
-                    <UniformGrid Grid.Row="1"></UniformGrid>
-               </Grid>
+                    <UniformGrid Height="125" Background="Black" Margin="0,31,0,-24" Grid.RowSpan="2" VerticalAlignment="Top"/>
+                </Grid>
                 <Grid Name="GridDockB" Grid.Column="1" Grid.Row="1" Height="155" Width="145" Background="Blue">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30"/>
                         <RowDefinition Height="100"/>
                     </Grid.RowDefinitions>
                     <Label Margin="40 0 0 0">Grid B</Label>
+                    <UniformGrid Height="123" Background="Black" Margin="0,31,0,-22" Grid.RowSpan="2" VerticalAlignment="Top"/>
                 </Grid>
             </Grid>
         </Grid>
