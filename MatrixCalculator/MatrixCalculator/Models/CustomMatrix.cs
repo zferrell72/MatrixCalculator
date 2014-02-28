@@ -18,7 +18,7 @@ namespace MatrixCalculator.Models
 
         public void PopulateMatrix(int[,] array)
         {
-
+            theMatrix = array;
         }
 
         public void InitializeMatrix(int dimension)
@@ -35,7 +35,7 @@ namespace MatrixCalculator.Models
             {
                 for (int col = 0; col < size; col++)
                 {
-                    int newValue = theMatrix[col, row] - otherMatrix.getValue(row, col);
+                    int newValue = theMatrix[row, col] - otherMatrix.getValue(row, col);
                     result.setValue(row, col, newValue);
                 }
             }
@@ -45,12 +45,12 @@ namespace MatrixCalculator.Models
 
         public int getValue(int row, int col)
         {
-            return theMatrix[col, row];
+            return theMatrix[row, col];
         }
 
         public void setValue(int row, int col, int value)
         {
-            theMatrix[col, row] = value;
+            theMatrix[row, col] = value;
         }
 
     }
