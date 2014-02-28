@@ -24,5 +24,27 @@ namespace MatrixCalculator
         {
             InitializeComponent();
         }
+
+        private void Make2x2(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+        private void Make3x3(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+        private void Make4x4(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+        private void Make5x5(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+        private void Make6x6(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }
