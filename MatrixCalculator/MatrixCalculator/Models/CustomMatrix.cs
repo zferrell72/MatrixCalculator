@@ -87,5 +87,9 @@ namespace MatrixCalculator.Models
             theMatrix[row, col] = value;
         }
 
+        public int[,] getMatrix()
+        {
+            return theMatrix;
+        }
     }
 }

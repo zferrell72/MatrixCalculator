@@ -1,16 +1,13 @@
 ﻿<Window x:Class="MatrixCalculator.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="400" Width="600">
+        Title="MainWindow" Height="220" Width="900">
     <Grid Height="Auto" Width="Auto" Name="GreatFrame">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
 
         <Grid Height="Auto" Width="Auto">
             <Grid.ColumnDefinitions>
@@ -39,23 +36,77 @@
                     <Button Width="135" Height="30" Name="V6x6" Click="Make6x6">Create 6x6</Button>
                 </ComboBox>
 
-                <Grid Name="GridDockA" Grid.Column="0" Grid.Row="1" Height="155" Width="145" Background="Red">
+                <Grid Name="GridDockA" Grid.Column="0" Grid.Row="1" Height="155" Width="145" Background="Tan">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30"/>
                         <RowDefinition Height="100"/>
                     </Grid.RowDefinitions>
                     <Label Margin="40 0 0 0">Grid A</Label>
-                    <UniformGrid Height="125" Background="Black" Margin="0,31,0,-24" Grid.RowSpan="2" VerticalAlignment="Top"/>
+                    <UniformGrid Name="GridA" Background="Black" Height ="130"  Margin="0,25,1,-40" Grid.RowSpan="2" VerticalAlignment="Top"/>
                 </Grid>
-                <Grid Name="GridDockB" Grid.Column="1" Grid.Row="1" Height="155" Width="145" Background="Blue">
+                <Grid Name="GridDockB" Grid.Column="1" Grid.Row="1" Height="155" Width="145" Background="Tan">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30"/>
                         <RowDefinition Height="100"/>
                     </Grid.RowDefinitions>
                     <Label Margin="40 0 0 0">Grid B</Label>
-                    <UniformGrid Height="123" Background="Black" Margin="0,31,0,-22" Grid.RowSpan="2" VerticalAlignment="Top"/>
+                    <UniformGrid  Name="GridB" Height="130" Background="Black" Margin="1,25,0,-40" Grid.RowSpan="2" VerticalAlignment="Top"/>
                 </Grid>
             </Grid>
+        </Grid>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Name="Error" Content="Dbug here"/>
+            <Button Grid.Row="1" Name="Button1" Content="Add A + B" Click="AddAB" IsEnabled="False"/>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Name="Button2"  Content="Subtract A - B" Click="SubAB" IsEnabled="False"/>
+                <Button Name="Button3" Content="Subtract B - A" Click="SubBA" Grid.Column="1"  IsEnabled="False"/>
+            </Grid>
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Name="Button4" Content="Multiply A*B" Click="MultiAB" IsEnabled="False"/>
+                <Button Name="Button5"  Content="Multiply B*A" Click="MultiBA" Grid.Column="1"  IsEnabled="False"/>
+            </Grid>
+            <Grid Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width ="50"/>
+                </Grid.ColumnDefinitions>
+                <Button Name="Button6"  Content="Scalar*A" Click="ScalA" IsEnabled="False"/>
+                <Button Name="Button9"  Content="Scalar*B" Click="ScalB" IsEnabled="False" Grid.Column="1"/>
+                <TextBox Name="Button0" Text="1" Grid.Column="2" Height="20" Width="40" IsEnabled="False"/>
+            </Grid>
+            <Grid Grid.Row="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Name="Button7" Content="Inverse A"  IsEnabled="False"/>
+                <Button Name="Button8" Content="Inverse B" Grid.Column="1"  IsEnabled="False"/>
+            </Grid>
+        </Grid>
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Margin="120,0,0,0">Result</Label>
+            <UniformGrid Grid.Row="1" Name="AnswerDisplay" Background="Gray"></UniformGrid>
         </Grid>
     </Grid>
 </Window>
