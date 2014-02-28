@@ -28,7 +28,7 @@ namespace MatrixCalculator.Models
             theMatrix = new int[dimension, dimension];
         }
 
-        public CustomMatrix SubtractMatrix(CustomMatrix otherMatrix)
+        public CustomMatrix Subtract(CustomMatrix otherMatrix)
         {
             CustomMatrix result = new CustomMatrix(size);
 
@@ -36,13 +36,14 @@ namespace MatrixCalculator.Models
             {
                 for (int col = 0; col < size; col++)
                 {
-                    int newValue = theMatrix[row, col] - otherMatrix.getValue(row, col);
-                    result.setValue(row, col, newValue);
+                    int newValue = theMatrix[row, col] - otherMatrix.GetValue(row, col);
+                    result.SetValue(row, col, newValue);
                 }
             }
 
             return result;
         }
+
 
         public CustomMatrix Add(CustomMatrix otherMatrix)
         {
@@ -52,20 +53,36 @@ namespace MatrixCalculator.Models
             {
                 for (int column = 0; column < size; column++)
                 {
-                    int newResult = theMatrix[row, column] + otherMatrix.getValue(row, column);
-                    resultMatrix.setValue(row, column, newResult);
+                    int newResult = theMatrix[row, column] + otherMatrix.GetValue(row, column);
+                    resultMatrix.SetValue(row, column, newResult);
                 }
             }
 
             return resultMatrix;
         }
 
-        public int getValue(int row, int col)
+        
+
+        public CustomMatrix Scale(int scalar)
+        {
+            for (int row = 0; row < size; row++)
+            {
+                for (int col = 0; col < size; col++)
+                {
+                    theMatrix[row, col] *= scalar;
+                }
+            }
+
+            return this;
+        }
+
+        public int GetValue(int row, int col)
+
         {
             return theMatrix[row, col];
         }
 
-        public void setValue(int row, int col, int value)
+        public void SetValue(int row, int col, int value)
         {
             theMatrix[row, col] = value;
         }

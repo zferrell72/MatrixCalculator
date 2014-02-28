@@ -35,13 +35,16 @@ namespace MatrixCalculator
             CustomMatrix B = new CustomMatrix(dimension);
             B.PopulateMatrix(arrayForB);
 
-            CustomMatrix result = A.Add(B);
+
+           // CustomMatrix result = A.Add(B);
+            CustomMatrix result = A.Scale(2);
+
 
             for (int row = 0; row < dimension; row++)
             {
                 for (int col = 0; col < dimension; col++)
                 {
-                    Console.Write(result.getValue(row, col) + " ");
+                    Console.Write(result.GetValue(row, col) + " ");
                 }
                 Console.WriteLine();
             }
