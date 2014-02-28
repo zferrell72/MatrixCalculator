@@ -24,8 +24,8 @@ namespace MatrixCalculator
     {
         private Dictionary<String, TextBox> inputFields = new Dictionary<String, TextBox>();
 
-        private CustomMatrix MatrixA;
-        private CustomMatrix MatrixB;
+        private CustomMatrix MatrixA= new CustomMatrix(1);
+        private CustomMatrix MatrixB= new CustomMatrix(1);
         public MainWindow()
         {
             InitializeComponent();
