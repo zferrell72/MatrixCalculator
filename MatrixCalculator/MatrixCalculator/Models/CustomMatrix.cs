@@ -114,7 +114,7 @@ namespace MatrixCalculator.Models
             else
             {
                 // There is no inverse
-
+                resultMatrix = this;
             }
             return resultMatrix;
         }
