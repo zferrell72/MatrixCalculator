@@ -96,8 +96,8 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Button Name="Button7" Content="Inverse A"  IsEnabled="False"/>
-                <Button Name="Button8" Content="Inverse B" Grid.Column="1"  IsEnabled="False"/>
+                <Button Name="Button7" Content="Inverse A" Click="InvA"  IsEnabled="False"/>
+                <Button Name="Button8" Content="Inverse B" Click="InvB" Grid.Column="1"  IsEnabled="False"/>
             </Grid>
         </Grid>
         <Grid Grid.Column="2">

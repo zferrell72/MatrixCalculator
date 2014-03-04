@@ -24,47 +24,33 @@ namespace MatrixCalculator
     {
         private Dictionary<String, TextBox> inputFields = new Dictionary<String, TextBox>();
 
-        private CustomMatrix MatrixA= new CustomMatrix(1);
-        private CustomMatrix MatrixB= new CustomMatrix(1);
+        private CustomMatrix MatrixA;
+        private CustomMatrix MatrixB;
         public MainWindow()
         {
             InitializeComponent();
 
-            const int dimension = 2;
+            //const int dimension = 3;
 
-            int[,] arrayForA = new int[dimension, dimension] { {3, 4}, {2, 1}};
-            int[,] arrayForB = new int[dimension, dimension] { { 1, 6 }, { 2, 4 } };
+            //double[,] arrayForA = new double[dimension, dimension] { { 2, 4, 3 }, { 0, 1, -1 }, { 3, 5, 7 } };
 
-            CustomMatrix A = new CustomMatrix(dimension);
-            A.PopulateMatrix(arrayForA);
-            CustomMatrix B = new CustomMatrix(dimension);
-            B.PopulateMatrix(arrayForB);
+            //CustomMatrix A = new CustomMatrix(dimension);
+            //A.PopulateMatrix(arrayForA);
 
+            //CustomMatrix result = A.Inverse();
 
-           // CustomMatrix result = A.Add(B);
-            CustomMatrix result = A.Scale(2);
-
-
-            for (int row = 0; row < dimension; row++)
-            {
-                for (int col = 0; col < dimension; col++)
-                {
-                    Console.Write(result.GetValue(row, col) + " ");
-                }
-                Console.WriteLine();
-            }
         }
 
         private bool setAandB()
         {
-            int[,] TempA = new int[GridA.Rows, GridA.Rows];
-            int[,] TempB = new int[GridA.Rows, GridA.Rows];
+            double[,] TempA = new double[GridA.Rows, GridA.Rows];
+            double[,] TempB = new double[GridA.Rows, GridA.Rows];
             bool worked = true;
             for(int i=0;i<GridA.Rows;i++)
             {
                 for (int j = 0; j < GridA.Rows; j++)
                 {
-                    if (!Int32.TryParse(((String)inputFields["A" + i + ":" + j].Text), out TempA[i, j]) || !Int32.TryParse(((String)inputFields["B" + i + ":" + j].Text), out TempB[i, j]))
+                    if (!Double.TryParse(((String)inputFields["A" + i + ":" + j].Text), out TempA[i, j]) || !Double.TryParse(((String)inputFields["B" + i + ":" + j].Text), out TempB[i, j]))
                     {
                         worked = false;
                         break;
@@ -73,6 +59,8 @@ namespace MatrixCalculator
                         break;
                 }
             }
+            MatrixA = new CustomMatrix(GridA.Rows);
+            MatrixB = new CustomMatrix(GridA.Rows);
             MatrixA.PopulateMatrix(TempA);
             MatrixB.PopulateMatrix(TempB);
             return worked;
@@ -147,7 +135,7 @@ namespace MatrixCalculator
             Button9.IsEnabled = true;
         }
 
-        private void BuildAndDisplay(int[,] matrix)
+        private void BuildAndDisplay(double[,] matrix)
         {
             int numSides = GridA.Rows;
             AnswerDisplay.Children.Clear();
@@ -169,10 +157,10 @@ namespace MatrixCalculator
             }
         }
 
-        private int getScalar()
+        private double getScalar()
         {
-            int returnme;
-            if (!Int32.TryParse(((String)Button0.Text), out returnme))
+            double returnme;
+            if (!Double.TryParse(((String)Button0.Text), out returnme))
             {
                 returnme = -1337;
             }
@@ -183,7 +171,7 @@ namespace MatrixCalculator
         {
             if (setAandB())
             {
-                //BuildAndDisplay(CustomMatrixMethodCall.getMatrix());
+                BuildAndDisplay(MatrixA.Subtract(MatrixB).getMatrix());
             }
             else
             {
@@ -194,7 +182,7 @@ namespace MatrixCalculator
         {
             if (setAandB())
             {
-                //BuildAndDisplay(CustomMatrixMethodCall.getMatrix());
+                BuildAndDisplay(MatrixB.Subtract(MatrixA).getMatrix());
             }
             else
             {
@@ -205,7 +193,7 @@ namespace MatrixCalculator
         {
             if (setAandB())
             {
-                //BuildAndDisplay(CustomMatrixMethodCall.getMatrix());
+                BuildAndDisplay(MatrixA.Add(MatrixB).getMatrix());
             }
             else
             {
@@ -216,7 +204,7 @@ namespace MatrixCalculator
         {
             if (setAandB())
             {
-                //BuildAndDisplay(CustomMatrixMethodCall.getMatrix());
+                BuildAndDisplay(MatrixA.Multiply(MatrixB).getMatrix());
             }
             else
             {
@@ -227,7 +215,7 @@ namespace MatrixCalculator
         {
             if (setAandB())
             {
-                //BuildAndDisplay(CustomMatrixMethodCall.getMatrix());
+                BuildAndDisplay(MatrixB.Multiply(MatrixA).getMatrix());
             }
             else
             {
@@ -239,7 +227,7 @@ namespace MatrixCalculator
             var scalar = getScalar();
             if (setAandB() && scalar!=-1337)
             {
-                //BuildAndDisplay(CustomMatrixMethodCall.getMatrix());
+                BuildAndDisplay(MatrixA.Scale(scalar).getMatrix());
             }
             else
             {
@@ -251,7 +239,7 @@ namespace MatrixCalculator
             var scalar = getScalar();
             if (setAandB() && scalar != -1337)
             {
-                //BuildAndDisplay(CustomMatrixMethodCall.getMatrix());
+                BuildAndDisplay(MatrixB.Scale(scalar).getMatrix());
             }
             else
             {
@@ -262,7 +250,7 @@ namespace MatrixCalculator
         {
             if (setAandB())
             {
-                //BuildAndDisplay(CustomMatrixMethodCall.getMatrix());
+                BuildAndDisplay(MatrixA.Inverse().getMatrix());
             }
             else
             {
@@ -273,7 +261,7 @@ namespace MatrixCalculator
         {
             if (setAandB())
             {
-                //BuildAndDisplay(CustomMatrixMethodCall.getMatrix());
+                BuildAndDisplay(MatrixB.Inverse().getMatrix());
             }
             else
             {
