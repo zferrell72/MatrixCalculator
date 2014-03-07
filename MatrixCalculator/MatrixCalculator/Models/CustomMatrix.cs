@@ -101,7 +101,7 @@ namespace MatrixCalculator.Models
         {
             CustomMatrix resultMatrix = null;
             double determinate = Determinate(this);
-            if (determinate > 0)
+            if (!determinate.Equals(0d))
             {
 
                 CustomMatrix preTransposeAdjoint = new CustomMatrix(this.size);
@@ -137,7 +137,10 @@ namespace MatrixCalculator.Models
             double det = 0;
             if (currentMatrix.size == 2)
             {
-                det = ((currentMatrix.GetValue(0, 0) * currentMatrix.GetValue(1, 1)) - (currentMatrix.GetValue(0, 1) * currentMatrix.GetValue(1, 0)));
+                resultMatrix.SetValue(0, 0, currentMatrix.GetValue(1, 1));
+                resultMatrix.SetValue(0, 1, -1 * currentMatrix.GetValue(1, 0));
+                resultMatrix.SetValue(1, 0, -1 * currentMatrix.GetValue(0, 1));
+                resultMatrix.SetValue(1, 1, currentMatrix.GetValue(0, 0));
             }
             else
             {
